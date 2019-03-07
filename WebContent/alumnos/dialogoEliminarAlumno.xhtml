@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<HTML xmlns    = "http://www.w3.org/1999/xhtml"
+ 	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+ 	  xmlns:h  = "http://java.sun.com/jsf/html"
+	  xmlns:f  = "http://java.sun.com/jsf/core"
+	  xmlns:p  = "http://primefaces.org/ui">
 
-</body>
-</html>
+	<p:confirmDialog id="eliminarAlumno" header="Confirmacion" widgetVar="eliminarAlumno"
+					 width="410" height="40" closable="false" position="center center"
+					 onShow="PF('confirmacion').initPosition()" responsive="true">
+		<p:commandButton value="Si" process="@parent" 
+						update=":formAlumnos:tablaAlumnos :formAlumnos:growl :formAlumnos:menuBar"
+						oncomplete="PF('eliminarAlumno').hide();"
+						actionListener="#{administracionAlumnosBean.eliminarAlumno}" />
+		<f:facet name="message">
+			<div>
+				<h:outputFormat value="Estas seguro que desea eliminar al alumno?" escape="false"/>
+			</div>
+		</f:facet>
+	</p:confirmDialog>
+
+</HTML>

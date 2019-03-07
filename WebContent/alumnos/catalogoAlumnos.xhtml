@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+ 	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+ 	  xmlns:h  = "http://java.sun.com/jsf/html"
+	  xmlns:f  = "http://java.sun.com/jsf/core"
+	  xmlns:p  = "http://primefaces.org/ui"
+	  template = "/WEB-INF/templates/layoutnormal.xhtml">
+	  
+	<ui:define name="cuerpo">
+		<div class="Card">
+			<h:form id="formAlumnos">
+				<p:breadCrumb>
+					<p:menuitem value="Home"/>
+					<p:menuitem value="Catalogos"/>
+					<p:menuitem value="Alumnos"/>
+				</p:breadCrumb>
+				<br />
+				<p:menubar id="menuBar">
+					<p:submenu label="Opciones"></p:submenu>
+					<p:menuitem value="Limpiar filtros" icon="fa fa-eraser" onclick="PF('tablaAlumnos').clearFilters()"/>
+				</p:menubar>
+				<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank"></p:panelGrid>
+			</h:form>
+			<!-- 
+			<ui:include src="dialogoAgregarAlumno.xhtml" />
+			<ui:include src="dialogoEditarAlumno.xhtml" />
+			<ui:include src="dialogoEliminarAlumno.xhtml" />
+			 -->
+		</div>  
+	</ui:define>
+</ui:composition>
