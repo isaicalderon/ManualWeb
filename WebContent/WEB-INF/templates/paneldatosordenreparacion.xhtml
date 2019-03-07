@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+	<center>
+		<p:panel styleClass="estiloPanelDatos"
+			style="background-color:rgb(233,233,233); margin-left:15%;margin-right:15%;">
+			<h:panelGrid columns="2" layout="grid">
+				<h:panelGrid columns="2" layout="grid">
+					<h:outputText id="lblcliente" for="cliente" value="Cliente:"
+						style="font-weight:bold; font-size:14px;" />
+					<h:outputText id="cliente"
+						value="#{seleccionBean.ordenReparacionSeleccionada.cliente.clienteRazonSocialGrid}" />
+
+					<h:outputText id="lblmarcaEquipo" for="codigoComponente"
+						value="Codigo Componente:"
+						style="font-weight:bold; font-size:14px" />
+					<h:outputText id="codigoComponente"
+						value="#{seleccionBean.ordenReparacionSeleccionada.codigoComponente.descripcionCodigoComponenteGrid}" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" layout="grid">
+					<h:outputText id="lblmodeloEquipo" for="modeloEquipo"
+						value="Modelo Equipo:" style="font-weight:bold; font-size:14px" />
+					<h:outputText id="modeloEquipo"
+						value="#{seleccionBean.ordenReparacionSeleccionada.modelo.modeloKey.modelo} - #{seleccionBean.ordenReparacionSeleccionada.modelo.descripcionModelo}" />
+
+					<h:outputText id="lblestatusOrden" for="estatusOrden"
+						value="Serie Componente:" style="font-weight:bold; font-size:14px" />
+					<h:outputText id="estatusOrden"
+						value="#{seleccionBean.ordenReparacionSeleccionada.componente.serieComponente}" />
+				</h:panelGrid>
+			</h:panelGrid>
+		</p:panel>
+	</center>
+</h:body>
+
+</html>

@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pv="http://primefaces.org/venture">
+
+	<h:form id="menuform">
+		<pv:menu>
+			<p:menuitem value="Selección de Subcomponentes/Contenedores"
+				immediate="true" action="seleccionsubcomponentescontenedores" />
+
+			<p:menuitem value="Entradas/Salidas" immediate="true"
+				action="entradasalidas" />
+
+			<p:submenu label="Catálogos" rendered="true">
+				<p:menuitem value="Estaciones de Trabajo" immediate="true"
+					action="catalogoEstaciones" />
+
+				<p:menuitem value="Subcomponentes/Contenedores" immediate="true"
+					action="catalogoSubcomponentes" />
+
+				<p:menuitem value="Subcomponentes/Contenedores por componente"
+					immediate="true" action="subcomponentesporcomponente" />
+			</p:submenu>
+			
+			<p:submenu label="Reportes" rendered="true">
+				<p:menuitem value="Etiquetas Internas por Estación de Trabajo" immediate="true"
+					action="etiquetasInternasPorEstacionTrabajo" />
+			</p:submenu>
+
+		</pv:menu>
+	</h:form>
+</ui:composition>
