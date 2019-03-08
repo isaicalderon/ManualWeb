@@ -95,9 +95,7 @@ public class AdministradorAlumnosBean extends GenericBean implements Serializabl
 	public List<Alumno> listarAlumnos() {
 		List<Alumno> alumnos = new ArrayList<Alumno>();
 		try {
-			
-		
-		Comparator<Alumno> comp = (Alumno a, Alumno b) -> {
+			Comparator<Alumno> comp = (Alumno a, Alumno b) -> {
 			Date fechaA = a.getFechaHoraCreacion() != null ? a.getFechaHoraCreacion() : new Date();
 			Date fechaB = b.getFechaHoraCreacion() != null ? b.getFechaHoraCreacion() : new Date();
 			return fechaB.compareTo(fechaA);
@@ -132,7 +130,9 @@ public class AdministradorAlumnosBean extends GenericBean implements Serializabl
 	}
 	
 	public void reload() {
-		alumnosList.clear();
+		if (alumnosList != null) {
+			alumnosList.clear();
+		}
 		alumnosList = listarAlumnos();
 		nombres = "";
 		apellidoPaterno = "";
@@ -181,7 +181,14 @@ public class AdministradorAlumnosBean extends GenericBean implements Serializabl
 	}
 	
 	public String getNombreFormateado(Alumno alumno) {
-		return formatoMatricula.format(alumno.getMatricula()+" - "+getNombreCompleto(alumno));
+		return formatoMatricula.format(alumno.getMatricula())+" - "+getNombreCompleto(alumno);
+	}
+	
+	public void onRowSelect() {
+		nombres = alumno.getNombres();
+		apellidoPaterno = alumno.getApellidoPaterno();
+		apellidoMaterno = alumno.getApellidoMaterno();
+		matricula = alumno.getMatricula();
 	}
 	
 	

@@ -23,13 +23,12 @@
 						oncomplete="PF('altaAlumno').hide();"
 						process="@parent"
 						actionListener="#{administradorAlumnosBean.agregarAlumno}"
-						update="nombre, apellidoPaterno, apellidoMaterno, 
-							:formAlumnos:tablaAlumnos, :formAlumnos:menuBar,
+						update="nombre, apellidoPaterno, apellidoMaterno, :formAlumnos:tablaAlumnos, :formAlumnos:menuBar,
 							:formAlumnos:growl"/>
 					<p:commandButton value="Cancelar" onclick="PF('altaAlumno').hide();"
 						actionListener="#{administradorAlumnosBean.reload}"
 						update="nombre, apellidoPaterno, apellidoMaterno, 
-							:formAlumnos:tablaAlumnos, :formAlumnos:menuBar;"/>
+							:formAlumnos:tablaAlumnos, :formAlumnos:menuBar"/>
 				
 				</div>
 			</p:panel>

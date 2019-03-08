@@ -14,17 +14,60 @@
 					<p:menuitem value="Alumnos"/>
 				</p:breadCrumb>
 				<br />
+				<p:growl id="growl" showSummary="true" showDetail="true" life="2000" sticky="false"/>
 				<p:menubar id="menuBar">
-					<p:submenu label="Opciones"></p:submenu>
+					<p:submenu label="Opciones">
+						<p:menuitem value="Registrar" icon="fa fa-plus" onclick="PF('altaAlumno').show();"/>
+						<p:menuitem value="Editar" icon="fa fa-plus" onclick="PF('editarAlumno').show();" 
+							disabled="#{administradorAlumnos.Bean.alumno == null}"/>
+						<p:menuitem value="Eliminar" icon="fa fa-plus" onclick="PF('eliminarAlumno').show();"
+							disabled="#{administradorAlumnos.Bean.alumno == null}"/>
+					</p:submenu>
 					<p:menuitem value="Limpiar filtros" icon="fa fa-eraser" onclick="PF('tablaAlumnos').clearFilters()"/>
 				</p:menubar>
-				<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank"></p:panelGrid>
+				<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank">
+					<p:dataTable id="tablaAlumnos" widgetVar="tablaAlumnos"
+						var="alumno" value="#{administradorAlumn3
+						osBean.alumnosList}"	
+						selection="#{administradorAlumnosBean.alumno}"
+						selectionMode="single" 			
+						filteredValue="#{seleccionBean.alumnosListFiltrada}"		
+						rowKey="#{alumno.matricula}" filterDelay="1000"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginatorPosition="bottom" rows="10"
+						sortMode="multiple" paginator="true" 
+						currentPageReportTemplate="Página: {currentPage} de {totalPages}"
+						emptyMessage="No se encontraron Alumnos" style="margin-bottom:20px;"
+						rowsPerPageTemplate="5,10,15">
+						
+						<p:ajax event="rowSelect"
+							listener="#{administradorAlumnosBean.onRowSelect}"
+							update="formAlumnos:tablaAlumnos, formAlumnos:menuBar, :formDialogoModificar:matricula, :formDialogoModificar:nombre, :formDialogoModificar:apellidoPaterno, :formDialogoModificar:apellidoMaterno" />
+							
+							<p:column headerText="Matrícula&lt;br/&gt;" sortBy="#{alumno.matricula}" filterBy="#{alumno.matricula}"
+							filterMatchMode="contains" filterStyle="width:50%;">
+								<h:outputText value="#{alumno.matricula}" />
+							</p:column>
+							<p:column headerText="Nombre" sortBy="#{alumno.nombres}" filterBy="#{alumno.nombres}" filterMatchMode="contains"
+								filterStyle="width:50%;">
+								<h:outputText value="#{alumno.nombres}" />
+							</p:column>
+							<p:column headerText="Apellido Paterno&lt;br/&gt;" sortBy="#{alumno.apellidoPaterno}"
+								filterBy="#{alumno.apellidoPaterno}" filterMatchMode="contains" filterStyle="width:50%;">
+								<h:outputText value="#{alumno.apellidoPaterno}" />
+							</p:column>
+							<p:column headerText="Apellido Materno" sortBy="#{alumno.apellidoMaterno}"
+							filterBy="#{alumno.apellidoMaterno}" filterMatchMode="contains" filterStyle="width:50%;">
+								<h:outputText value="#{alumno.apellidoMaterno}" />
+							</p:column>
+					</p:dataTable>
+				</p:panelGrid>
 			</h:form>
-			<!-- 
-			<ui:include src="dialogoAgregarAlumno.xhtml" />
+			
 			<ui:include src="dialogoEditarAlumno.xhtml" />
+			<ui:include src="dialogoAgregarAlumno.xhtml" />
 			<ui:include src="dialogoEliminarAlumno.xhtml" />
-			 -->
+			
 		</div>  
 	</ui:define>
 </ui:composition>
