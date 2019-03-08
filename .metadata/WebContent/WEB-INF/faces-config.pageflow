@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15520077351360" configfile="/ManualWeb/WebContent/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15520077351360" configfile="/ManualWeb/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf15520281436539" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf155202814365310 pf155202816200615 pf155202818411520" path="/*"/>
+  <nodes xsi:type="pageflow:PFPage" name="alumnos/catalogoAlumnos.xhtml" id="pf155202814365311" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf155202814365310" path="/alumnos/catalogoAlumnos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf155202816200616" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf155202816200615" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login/login.xhtml" id="pf155202818411521" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf155202818411520" path="/login/login.xhtml"/>
+  <links id="pf155202814365310" target="pf155202814365311" source="pf15520281436539" outcome="catalogoAlumnos" redirect="true"/>
+  <links id="pf155202816200615" target="pf155202816200616" source="pf15520281436539" outcome="no" redirect="true"/>
+  <links id="pf155202818411520" target="pf155202818411521" source="pf15520281436539" outcome="logout" redirect="true"/>
+</pageflow:Pageflow>

@@ -5,4 +5,27 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
     version="2.3">
 
+	<component>
+		<component-type> org.primefaces.component.VentureMenu</component-type>
+		<component-class>org.primefaces.venture.component.menu.VentureMenu</component-class>
+	</component>
+	<navigation-rule>
+		<from-view-id>/*</from-view-id>
+		
+		<navigation-case>
+			<from-outcome>catalogoAlumnos</from-outcome>
+			<to-view-id>/alumnos/catalogoAlumnos.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>no</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>	
 </faces-config>

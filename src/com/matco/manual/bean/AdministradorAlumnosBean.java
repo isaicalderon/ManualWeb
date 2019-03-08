@@ -2,26 +2,23 @@ package com.matco.manual.bean;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
-
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-
 import org.apache.log4j.Logger;
 import org.primefaces.PrimeFaces;
-
 import com.matco.manual.entity.Alumno;
 import com.matco.manual.facade.AlumnoFacade;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+
+
 @ManagedBean(name = "administradorAlumnosBean")
 @ViewScoped
-
 public class AdministradorAlumnosBean extends GenericBean implements Serializable{
 
 	/**
@@ -90,11 +87,14 @@ public class AdministradorAlumnosBean extends GenericBean implements Serializabl
 	public void init() {
 		loginBean = this.obtenerBean("loginBean");
 		usuario = loginBean.getUsuario() != null ? loginBean.getUsuario().getUsuario() : "DESARROLLO";
+		alumnosList = listarAlumnos();
+		//System.out.println("se ejecuto el init");
 	}
 	
 	public List<Alumno> listarAlumnos() {
 		List<Alumno> alumnos = new ArrayList<Alumno>();
 		try {
+			alumnos = alumnoFacade.obtenerTodosAlumnos();
 			Comparator<Alumno> comp = (Alumno a, Alumno b) -> {
 			Date fechaA = a.getFechaHoraCreacion() != null ? a.getFechaHoraCreacion() : new Date();
 			Date fechaB = b.getFechaHoraCreacion() != null ? b.getFechaHoraCreacion() : new Date();

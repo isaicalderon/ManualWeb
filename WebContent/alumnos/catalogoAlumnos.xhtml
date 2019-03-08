@@ -19,16 +19,15 @@
 					<p:submenu label="Opciones">
 						<p:menuitem value="Registrar" icon="fa fa-plus" onclick="PF('altaAlumno').show();"/>
 						<p:menuitem value="Editar" icon="fa fa-plus" onclick="PF('editarAlumno').show();" 
-							disabled="#{administradorAlumnos.Bean.alumno == null}"/>
+							disabled="#{administradorAlumnosBean.alumno == null}"/>
 						<p:menuitem value="Eliminar" icon="fa fa-plus" onclick="PF('eliminarAlumno').show();"
-							disabled="#{administradorAlumnos.Bean.alumno == null}"/>
+							disabled="#{administradorAlumnosBean.alumno == null}"/>
 					</p:submenu>
 					<p:menuitem value="Limpiar filtros" icon="fa fa-eraser" onclick="PF('tablaAlumnos').clearFilters()"/>
 				</p:menubar>
 				<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank">
 					<p:dataTable id="tablaAlumnos" widgetVar="tablaAlumnos"
-						var="alumno" value="#{administradorAlumn3
-						osBean.alumnosList}"	
+						var="alumno" value="#{administradorAlumnosBean.alumnosList}"	
 						selection="#{administradorAlumnosBean.alumno}"
 						selectionMode="single" 			
 						filteredValue="#{seleccionBean.alumnosListFiltrada}"		

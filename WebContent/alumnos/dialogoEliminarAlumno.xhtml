@@ -10,7 +10,8 @@
 		<p:commandButton value="Si" process="@parent" 
 						update=":formAlumnos:tablaAlumnos :formAlumnos:growl :formAlumnos:menuBar"
 						oncomplete="PF('eliminarAlumno').hide();"
-						actionListener="#{administracionAlumnosBean.eliminarAlumno}" />
+						actionListener="#{administradorAlumnosBean.eliminarAlumno}" />
+		<p:commandButton value="No" oncomplete="PF('eliminarAlumno').hide()"/>
 		<f:facet name="message">
 			<div>
 				<h:outputFormat value="Estas seguro que desea eliminar al alumno?" escape="false"/>
